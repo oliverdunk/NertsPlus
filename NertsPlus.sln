@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.810.22
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NertsPlus", "NertsPlus.csproj", "{8D6A7706-CDD2-4E82-A73A-E16CC80BBC79}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8D6A7706-CDD2-4E82-A73A-E16CC80BBC79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D6A7706-CDD2-4E82-A73A-E16CC80BBC79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D6A7706-CDD2-4E82-A73A-E16CC80BBC79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D6A7706-CDD2-4E82-A73A-E16CC80BBC79}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {978D6E8A-820A-4C53-9775-9049FE997CDB}
+	EndGlobalSection
+EndGlobal
