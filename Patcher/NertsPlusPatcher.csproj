@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">anycpu</Platform>
+    <ProjectGuid>{EA5CBE3D-12F4-47F5-AE37-14A3B9FE86FB}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>NertsPlusPatcher</RootNamespace>
+    <AssemblyName>NertsPlusPatcher</AssemblyName>
+    <TargetFramework>net452</TargetFramework>
+    <Configurations>Release;Debug</Configurations>
+    <Platforms>anycpu</Platforms>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|anycpu' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\net452</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Mono.Cecil" Version="0.11.4" />
+  </ItemGroup>
+</Project>

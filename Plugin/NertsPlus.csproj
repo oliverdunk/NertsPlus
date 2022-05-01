@@ -9,11 +9,6 @@
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="BepInEx.NetLauncher" Version="6.0.0-be.510" IncludeAssets="compile" />
-    <PackageReference Include="BepInEx.PluginInfoProps" Version="1.*" />
-  </ItemGroup>
-  
   <ItemGroup Condition="'$(TargetFramework.TrimEnd(`0123456789`))' == 'net'">
     <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.2" PrivateAssets="all" />
   </ItemGroup>
@@ -22,11 +17,27 @@
     <None Remove="Steamworks.NET" />
     <None Remove="NertsOnline-cleaned" />
     <None Remove="System.Data.Linq" />
+    <None Remove="wrappers\" />
+    <None Remove="patches\" />
+    <None Remove="screens\" />
+    <None Remove="Lib.Harmony" />
+    <None Remove="System.Text.Json" />
+    <None Remove="System.Json" />
+    <None Remove="Newtonsoft.Json" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="NertsOnline-cleaned">
-      <HintPath>..\..\..\..\Library\Application Support\Steam\steamapps\common\Nerts Online\NERTS! Online.app\Contents\MacOS\NertsOnline-cleaned.exe</HintPath>
+      <HintPath>..\bin\NertsOnline-cleaned.exe</HintPath>
     </Reference>
     <Reference Include="System.Data.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="wrappers\" />
+    <Folder Include="patches\" />
+    <Folder Include="screens\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Lib.Harmony" Version="2.2.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
 </Project>

@@ -1,4 +1,6 @@
 .vs/
 bin/
 obj/
+packages/
 .DS_STORE
+__pycache__/

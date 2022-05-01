@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.810.22
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NertsPlusPatcher", "NertsPlusPatcher.csproj", "{EA5CBE3D-12F4-47F5-AE37-14A3B9FE86FB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|anycpu = Debug|anycpu
+		Release|anycpu = Release|anycpu
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EA5CBE3D-12F4-47F5-AE37-14A3B9FE86FB}.Debug|anycpu.ActiveCfg = Debug|anycpu
+		{EA5CBE3D-12F4-47F5-AE37-14A3B9FE86FB}.Debug|anycpu.Build.0 = Debug|anycpu
+		{EA5CBE3D-12F4-47F5-AE37-14A3B9FE86FB}.Release|anycpu.ActiveCfg = Release|anycpu
+		{EA5CBE3D-12F4-47F5-AE37-14A3B9FE86FB}.Release|anycpu.Build.0 = Release|anycpu
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BA969C06-076B-4E94-8F11-A79320F083E3}
+	EndGlobalSection
+EndGlobal
