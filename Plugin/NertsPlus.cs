@@ -9,6 +9,7 @@ namespace NertsPlus
     [HarmonyPatch]
     public class NertsPlus
     {
+        private static string versionString;
         private static readonly bool SHOULD_REGENERATE_TEXTURES = false;
         private static List<String> LOADING_MESSAGES = new List<String>
         {
@@ -35,14 +36,18 @@ namespace NertsPlus
 
         public void Load()
         {
+            Version version = Assembly.GetExecutingAssembly().GetName().Version;
+            versionString = $"{version.Major}.{version.Minor}.{version.Build}";
+
             Harmony harmony = new Harmony("NertsPlus");
             harmony.PatchAll();
 
-            if (SHOULD_REGENERATE_TEXTURES) {
+            if (SHOULD_REGENERATE_TEXTURES)
+            {
                 typeof(GClass7).GetField("bool_8", BindingFlags.Static | BindingFlags.Public).SetValue(null, true);
             }
 
-            Console.WriteLine($"NertsPlus is loaded! 🎉");
+            Console.WriteLine($"NertsPlus {versionString} is loaded! 🎉");
         }
 
         [HarmonyPatch(typeof(TitleScreen), "Update")]
@@ -55,7 +60,7 @@ namespace NertsPlus
         private static void DrawModVersion()
         {
             Utils.NewTextDrawingOptions()
-                   .WithText($"Running NertsPlus 1.0.0")
+                   .WithText($"Running NertsPlus {versionString}")
                    .WithColor(Utils.White().WithAlpha(0.7f))
                    .WithPosition(new Vector2(20, 20))
                    .Draw();
@@ -68,7 +73,8 @@ namespace NertsPlus
             if (new Traverse(__instance).Field("bool_0").GetValue<bool>())
             {
                 CurrentLobbyType = LobbyType.OWNER_PRIVATE;
-            } else
+            }
+            else
             {
                 CurrentLobbyType = LobbyType.PUBLIC;
             }
