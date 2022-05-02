@@ -17,6 +17,7 @@ NertsPlus currently has the following features:
 
 ## Usage
 
+1. Install the latest version of the .NET framework.
 1. Install NERTS! Online.
 1. If running on macOS, install [Mono 4.6.2](https://download.mono-project.com/archive/4.6.2/) which is known to work with the latest version of NERTS! Online.
 1. Run `python3 patch.py` to patch the Nerts executable and build NertsPlus.
