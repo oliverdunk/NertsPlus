@@ -2,6 +2,8 @@
 
 NertsPlus is an open source mod for the Steam game [NERTS! Online](https://store.steampowered.com/app/1131190/NERTS_Online/). It aims to add a number of features and new gameplay mechanics.
 
+<img src="images/screenshot.png" width="500px">
+
 NERTS! Online is owned by [Zachtronics](https://www.zachtronics.com/). NertsPlus is a community creation and is not associated with Zachtronics in any way. Please avoid sending support questions their way when using NertsPlus as it is likely not something that they want to be burdened with.
 
 ## Current Features
