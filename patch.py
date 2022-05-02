@@ -53,6 +53,10 @@ shutil.copyfile(BIN_PATH / "Debug/net452/0Harmony.dll", os.path.dirname(nertsPat
 shutil.copyfile(BIN_PATH / "Debug/net452/Newtonsoft.Json.dll", os.path.dirname(nertsPath) + "/Newtonsoft.Json.dll")
 os.chdir("..")
 
+# Write steam_appid.txt file
+with open(os.path.dirname(nertsPath) + "/steam_appid.txt", "w") as file:
+  file.write("1131190")
+
 # Finally, copy textures...
 shutil.copyfile("textures/logo_button.tex", os.path.dirname(nertsPath) + "/Content/Packed/logo_button.tex")
 shutil.copyfile("textures/logo_button_hover.tex", os.path.dirname(nertsPath) + "/Content/Packed/logo_button_hover.tex")
