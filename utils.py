@@ -9,7 +9,7 @@ def get_nerts_path():
   if system == "Darwin":
     nertsPath = Path(os.path.join(os.path.expanduser('~'), "Library/Application Support/Steam/steamapps/common/Nerts Online/NERTS! Online.app/Contents/MacOS/NertsOnline.exe"))
   elif system == "Windows":
-    nertsPath = Path("C:/Program Files (x86)/Steam/steamapps/common/Nerts Online/NertsOnline.exe")
+    nertsPath = Path("C:/Program Files (x86)/Steam/steamapps/common/Nerts Online/NERTS! Online.exe")
 
   while nertsPath is None or not nertsPath.exists():
     try:
