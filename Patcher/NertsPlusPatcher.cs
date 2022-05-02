@@ -9,7 +9,7 @@ namespace NertsPlusPatcher
     public class NertsPlusPatcher
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("CodeQuality", "IDE0051:Remove unused private members", Justification = "Called using reflection")]
-        private static void LoadMod()
+        public static void LoadMod()
         {
             Console.WriteLine("Attempting to inject NertsPlus...");
 
@@ -24,7 +24,7 @@ namespace NertsPlusPatcher
         {
             AssemblyDefinition original = AssemblyDefinition.ReadAssembly("../bin/NertsOnline-cleaned.exe");
 
-            MethodInfo loadMethod = typeof(NertsPlusPatcher).GetMethod("LoadMod", BindingFlags.Static | BindingFlags.NonPublic);
+            MethodInfo loadMethod = typeof(NertsPlusPatcher).GetMethod("LoadMod", BindingFlags.Static | BindingFlags.Public);
             Mono.Cecil.Cil.MethodBody body = original.EntryPoint.Body;
 
             Instruction callInstruction = Instruction.Create(OpCodes.Call, original.MainModule.ImportReference(loadMethod));
