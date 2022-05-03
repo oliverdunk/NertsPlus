@@ -34,7 +34,7 @@ namespace NertsPlus
         private static String GetName(NetID id)
         {
             // Reflection to avoid bundling Steamworks library
-            Assembly steam = Assembly.LoadFile("Steamworks.NET.dll");
+            Assembly steam = Assembly.LoadFile(Path.Combine(Directory.GetCurrentDirectory(), "Steamworks.NET.dll"));
 
             Type steamIDType = steam.GetType("Steamworks.CSteamID");
             Object steamID = Activator.CreateInstance(steamIDType, id.ID);
