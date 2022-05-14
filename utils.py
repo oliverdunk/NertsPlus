@@ -2,6 +2,7 @@ import os
 import subprocess
 from pathlib import Path
 import shutil
+import shlex
 import platform
 import sys
 
@@ -44,20 +45,22 @@ def get_nerts_path():
     return nertsPath
 
 
-def run_exe(path, args: list[str] = None, cwd=None):
-    command = str(path)
+def run_exe(path, args: list[str] = [], cwd=None):
+    if system == "Darwin":
+        run_command("mono64", [str(path)] + args, cwd)
+    else:
+        run_command(path, args, cwd)
 
-    if args is None:
-        args = []
+
+def run_command(path, args: list[str] = [], cwd=None):
+    command = str(path)
 
     if cwd is None:
         cwd = Path().cwd()
 
     command_list = [command] + args
 
-    print(f"running {command_list} from {cwd}")
+    command_str = ' '.join(shlex.quote(arg) for arg in command_list)
+    print(f"running {command_str} from {cwd}")
 
-    if system == "Darwin":
-        command_list.insert(0, "mono64")
-
-    subprocess.call(command_list, cwd=cwd, shell=True)
+    subprocess.call([command_str], cwd=cwd, shell=True)

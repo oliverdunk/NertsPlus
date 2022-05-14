@@ -6,7 +6,7 @@ import shutil
 import subprocess
 import sys
 import urllib.request
-from utils import run_exe, get_nerts_path, remove_existing_path
+from utils import run_command, run_exe, get_nerts_path, remove_existing_path
 import zipfile
 
 
@@ -44,7 +44,7 @@ def build_patcher() -> None:
     """
     patcher_dir = Path().cwd() / "Patcher"
 
-    subprocess.call("dotnet run", cwd=patcher_dir)
+    subprocess.call("dotnet build", cwd=patcher_dir, shell=True)
 
 
 def run_patcher(bin_dir: Path, nerts_path: Path) -> None:
@@ -65,7 +65,7 @@ def build_plugin(nerts_path: Path) -> None:
     plugin_dir = Path().cwd() / "Plugin"
 
     # Build and copy plugin
-    run_exe("dotnet", ["build"], cwd=plugin_dir)
+    run_command("dotnet", ["build"], cwd=plugin_dir)
     shutil.copyfile(plugin_dir / "bin/Debug/net452/NertsPlus.dll", nerts_path.parent / "NertsPlus.dll")
     shutil.copyfile(plugin_dir / "bin/Debug/net452/0Harmony.dll", nerts_path.parent / "0Harmony.dll")
     shutil.copyfile(plugin_dir / "bin/Debug/net452/Newtonsoft.Json.dll", nerts_path.parent / "Newtonsoft.Json.dll")
@@ -146,7 +146,7 @@ def main():
     build_patcher()
     run_patcher(args.bin_dir, nerts_path)
     build_plugin(nerts_path)
-    copy_textures(args.bin_dir, nerts_path)
+    copy_textures(nerts_path)
     write_steam_appid(nerts_path)
 
     print("🎉 All done! Now re-run with the --run flag to run the game.")
