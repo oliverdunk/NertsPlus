@@ -60,7 +60,10 @@ def run_command(path, args: list[str] = [], cwd=None):
 
     command_list = [command] + args
 
-    command_str = ' '.join(shlex.quote(arg) for arg in command_list)
-    print(f"running {command_str} from {cwd}")
-
-    subprocess.call([command_str], cwd=cwd, shell=True)
+    if system == "Darwin":
+        command_str = ' '.join(shlex.quote(arg) for arg in command_list)
+        print(f"running {command_str} from {cwd}")
+        subprocess.call([command_str], cwd=cwd, shell=True)
+    else:
+        print(f"running {command_list} from {cwd}")
+        subprocess.call(command_list, cwd=cwd, shell=True)
