@@ -1,12 +1,17 @@
-import os
+from pathlib import Path
 import platform
-import utils
+from utils import run_exe, get_nerts_path
 
 system = platform.system()
 
-if system == "Darwin":
-  os.chdir(os.path.dirname(utils.get_nerts_path()) + "/osx")
-  utils.run_exe("../NertsOnline-patched.exe")
-else:
-  os.chdir(os.path.dirname(utils.get_nerts_path()))
-  utils.run_exe("NertsOnline-patched.exe")
+
+def run_game(nerts_path: Path):
+    if system == "Darwin":
+        run_exe("../NertsOnline-patched.exe", cwd=(nerts_path.parent / "osx"))
+    else:
+        run_exe("NertsOnline-patched.exe", cwd=(nerts_path.parent))
+
+
+if __name__ == "__main__":
+    nerts_path = get_nerts_path()
+    run_game(nerts_path)

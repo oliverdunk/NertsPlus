@@ -1,34 +1,69 @@
 import os
+import subprocess
 from pathlib import Path
+import shutil
+import shlex
 import platform
+import sys
 
 system = platform.system()
 
-def get_nerts_path():
-  # Try to find where Nerts is installed
-  if system == "Darwin":
-    nertsPath = Path(os.path.join(os.path.expanduser('~'), "Library/Application Support/Steam/steamapps/common/Nerts Online/NERTS! Online.app/Contents/MacOS/NertsOnline.exe"))
-  elif system == "Windows":
-    nertsPath = Path("C:/Program Files (x86)/Steam/steamapps/common/Nerts Online/NERTS! Online.exe")
 
-  while nertsPath is None or not nertsPath.exists():
+def remove_existing_path(path: Path) -> bool:
+    """
+    Removes a pathlib.Path if it exists.
+
+    returns:
+        - True on success,
+        - False on rmtree error
+    """
+
     try:
-      nertsPath = Path(input("Please enter the path to NertsOnline.exe: "))
-    except KeyboardInterrupt:
-      quit()
-    except:
-      print("")
-      pass
+        if path.exists():
+            shutil.rmtree(path)
+    except Exception:
+        return False
 
-  return nertsPath
+    return True
 
-def run_exe(path, args = None):
-  command = str(path)
 
-  if not args is None:
-    command = command + " " + args
+def get_nerts_path():
+    # Try to find where Nerts is installed
+    if system == "Darwin":
+        nertsPath = Path(os.path.join(os.path.expanduser('~'), "Library/Application Support/Steam/steamapps/common/Nerts Online/NERTS! Online.app/Contents/MacOS/NertsOnline.exe"))
+    elif system == "Windows":
+        nertsPath = Path("C:/Program Files (x86)/Steam/steamapps/common/Nerts Online/NERTS! Online.exe")
 
-  if system == "Darwin":
-    os.system("mono64 " + command)
-  else:
-    os.system(command)
+    while nertsPath is None or not nertsPath.exists():
+        try:
+            nertsPath = Path(input("Please enter the path to NertsOnline.exe: "))
+        except KeyboardInterrupt:
+            sys.exit()
+        except Exception as e:
+            print(e)
+
+    return nertsPath
+
+
+def run_exe(path, args: list[str] = [], cwd=None):
+    if system == "Darwin":
+        run_command("mono64", [str(path)] + args, cwd)
+    else:
+        run_command(path, args, cwd)
+
+
+def run_command(path, args: list[str] = [], cwd=None):
+    command = str(path)
+
+    if cwd is None:
+        cwd = Path().cwd()
+
+    command_list = [command] + args
+
+    if system == "Darwin":
+        command_str = ' '.join(shlex.quote(arg) for arg in command_list)
+        print(f"running {command_str} from {cwd}")
+        subprocess.call([command_str], cwd=cwd, shell=True)
+    else:
+        print(f"running {command_list} from {cwd}")
+        subprocess.call(command_list, cwd=cwd, shell=True)
